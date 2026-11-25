@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FashionHub – Đã nhận yêu cầu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .result-wrap {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1rem;
+    }
+    .result-box {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 1rem;
+      padding: 2.5rem 2rem;
+      max-width: 560px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0,0,0,.07);
+      text-align: center;
+    }
+    .result-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+    .result-box h1 { font-size: 1.5rem; margin-bottom: 0.5rem; color: #1a1a1a; }
+    .result-box p { color: #555; margin-bottom: 1.5rem; }
+    .result-data {
+      text-align: left;
+      background: #f7f7f5;
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #eee;
+    }
+    .result-data h2 { font-size: 0.875rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.75rem; }
+    .data-row { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.9rem; flex-wrap: wrap; }
+    .data-label { font-weight: 700; color: #1a1a1a; min-width: 80px; }
+    .data-value { color: #444; word-break: break-word; }
+    .note { font-size: 0.8rem; color: #aaa; margin-top: 0.75rem; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="logo" href="index.html">Fashion<span>Hub</span></a>
+      <nav aria-label="Menu chính">
+        <ul class="menu">
+          <li><a href="index.html#hero">Trang chủ</a></li>
+          <li><a href="index.html#products">Sản phẩm</a></li>
+          <li><a href="index.html#lien-he">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="result-wrap">
+      <div class="result-box">
+        <div class="result-icon">✅</div>
+        <h1>Đã nhận yêu cầu của bạn!</h1>
+        <p>Cảm ơn bạn đã liên hệ FashionHub. Chúng mình sẽ phản hồi trong vòng 24 giờ.</p>
+
+        <div class="result-data" id="result-data">
+          <h2>Thông tin bạn đã gửi</h2>
+          <div id="data-rows">
+            <!-- Được điền bởi JavaScript từ query string -->
+            <p style="color:#aaa; font-size:0.875rem;">Đang đọc dữ liệu...</p>
+          </div>
+          <p class="note">
+            ⚠️ Đây là trang kết quả thực hành HTML5 — dữ liệu hiển thị từ URL (query string),
+            không được lưu lên máy chủ hay gửi email thật.
+          </p>
+        </div>
+
+        <a href="index.html" class="btn btn-primary">← Quay lại trang chủ</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2026 FashionHub · FIT4014 · Phạm Quốc Bảo · CNTT20_02 · ĐH Đại Nam.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Đọc query string và hiển thị kết quả
+    const params = new URLSearchParams(window.location.search);
+    const container = document.getElementById('data-rows');
+
+    const labels = {
+      fullname: 'Họ tên',
+      phone:    'Điện thoại',
+      email:    'Email',
+      subject:  'Chủ đề',
+      message:  'Lời nhắn',
+    };
+
+    const subjectMap = {
+      'tu-van-san-pham': 'Tư vấn sản phẩm',
+      'don-hang':        'Hỏi về đơn hàng',
+      'doi-tra':         'Đổi/trả hàng',
+      'khac':            'Khác',
+    };
+
+    let html = '';
+    let hasData = false;
+
+    Object.entries(labels).forEach(([key, label]) => {
+      let val = params.get(key);
+      if (!val || !val.trim()) return;
+      hasData = true;
+      if (key === 'subject') val = subjectMap[val] || val;
+      html += `
+        <div class="data-row">
+          <span class="data-label">${label}:</span>
+          <span class="data-value">${val.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span>
+        </div>`;
+    });
+
+    container.innerHTML = hasData
+      ? html
+      : '<p style="color:#aaa;font-size:.875rem;">Không có dữ liệu — hãy thử điền form rồi nhấn gửi.</p>';
+  </script>
+</body>
+</html>
