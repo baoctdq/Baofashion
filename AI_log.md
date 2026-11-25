@@ -3,8 +3,8 @@
 - Họ và tên: Phạm Quốc Bảo
 - Mã sinh viên – Lớp: _(2071020024 của bạn)_ – CNTT20_02
 - Ngày thực hiện: 25/11/2026
-- Link repository: _(dán URL sau khi push lên GitHub)_
-- URL website: _(dán URL GitHub Pages sau khi deploy)_
+- Link repository: _(https://baoctdq.github.io/Baofashion/)_
+- URL website: _(https://github.com/baoctdq/Baofashion)_
 - Tình huống: [x] Website của tôi (BaoFashion – Shop thời trang trẻ)
 
 ---

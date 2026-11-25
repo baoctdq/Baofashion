@@ -12,8 +12,8 @@
 
 | Mục | Thông tin |
 |-----|-----------|
-| **Repository** | _(dán URL GitHub sau khi push)_ |
-| **Website** | _(dán URL GitHub Pages sau khi deploy)_ |
+| **Repository** | _(https://baoctdq.github.io/Baofashion/)_ |
+| **Website** | _(https://github.com/baoctdq/Baofashion)_ |
 | **Phiên bản** | v1.0.0 |
 | **Ngày hoàn thành** | 25/11/2026 |
 
